@@ -177,7 +177,7 @@ Object → image.png
 
 Maximum size:
 
-**5 TB per object**
+**50 TB per object**
 
 Important:
 
@@ -432,7 +432,7 @@ Maximum:
 
 ### Rules
 
-* Minimum part size → 5 MB
+* Minimum part size → 5 MB to 5GB
 * Last part can be smaller
 
 ### Example
@@ -512,5 +512,3 @@ Because S3 provides:
 5. What is Multipart Upload?
 
 ---
-
-**Next:** Part 2 → Storage Classes + Security + Encryption
