@@ -1,11 +1,12 @@
 # AWS S3 Interview Mastery — Part 1
 
 ## Topic
-**Amazon S3 (Simple Storage Service)**  
-Focus Areas: **Fundamentals + Architecture + Uploading**  
+
+**Amazon S3 (Simple Storage Service)**
+Focus Areas: **Fundamentals + Architecture + Uploading**
 Coverage: **Q1 – Q22**
 
-**Goal:** Prepare answers exactly how top MNC interviewers expect.
+**Goal:** Prepare answers exactly how top MNC interviewers expect (Amazon, Microsoft, Oracle, Deloitte, Accenture, Google).
 
 ---
 
@@ -19,16 +20,17 @@ Amazon S3 (Simple Storage Service) is an AWS fully managed **object storage serv
 
 ### Main Features
 
-- Highly scalable  
-- 99.999999999% durability  
-- 99.99% availability  
-- Secure through IAM, encryption, bucket policies  
+* Highly scalable
+* 99.999999999% durability
+* 99.99% availability
+* Secure through IAM, encryption, bucket policies
 
 Data is stored as **objects inside buckets**.
 
 ### Interview Follow-up
 
-**Q:** What type of storage is S3?  
+**Q:** What type of storage is S3?
+
 **A:** Object Storage
 
 ---
@@ -41,13 +43,13 @@ S3 is used when we need highly scalable and durable cloud storage.
 
 ### Common Use Cases
 
-- Static website hosting  
-- Backup and recovery  
-- Media storage (images/videos)  
-- Data lakes  
-- Log storage  
-- Archive storage  
-- Application file storage  
+* Static website hosting
+* Backup and recovery
+* Media storage (images/videos)
+* Data lakes
+* Log storage
+* Archive storage
+* Application file storage
 
 ### Example
 
@@ -65,9 +67,9 @@ Data is stored as objects.
 
 Each object contains:
 
-- Actual data  
-- Metadata  
-- Unique identifier (Key)
+* Actual data
+* Metadata
+* Unique identifier (Key)
 
 Unlike traditional storage, S3 does not behave like a hard disk.
 
@@ -75,17 +77,17 @@ Unlike traditional storage, S3 does not behave like a hard disk.
 
 ## 4. Difference between Object Storage, Block Storage, and File Storage?
 
-| Storage Type | AWS Service | Description |
-|-------------|-------------|-------------|
-| Object Storage | Amazon S3 | Stores files as objects |
-| Block Storage | Amazon EBS | Works like hard disk attached to VM |
-| File Storage | Amazon EFS | Shared network file system |
+| Storage Type   | AWS Service | Description                         |
+| -------------- | ----------- | ----------------------------------- |
+| Object Storage | Amazon S3   | Stores files as objects             |
+| Block Storage  | Amazon EBS  | Works like hard disk attached to VM |
+| File Storage   | Amazon EFS  | Shared network file system          |
 
 ### Example
 
-- S3 → Images  
-- EBS → EC2 disk  
-- EFS → Shared files across servers  
+* S3 → Images
+* EBS → EC2 disk
+* EFS → Shared files across servers
 
 ---
 
@@ -118,7 +120,9 @@ No.
 
 Bucket names must be unique across all AWS accounts globally.
 
-Example:
+### Example
+
+If another AWS user creates:
 
 ```text
 mycompany-data
@@ -134,7 +138,7 @@ Nobody else can create the same name.
 
 Because AWS creates a unique DNS endpoint for each bucket.
 
-Example:
+### Example
 
 ```text
 https://mybucket.s3.amazonaws.com
@@ -152,12 +156,12 @@ An object is the actual file stored in S3.
 
 Each object contains:
 
-- Data  
-- Key  
-- Metadata  
-- Version ID (if versioning enabled)
+* Data
+* Key
+* Metadata
+* Version ID (if versioning enabled)
 
-Example:
+### Example
 
 ```text
 Bucket → myfiles
@@ -187,7 +191,9 @@ Use **Multipart Upload** for large objects.
 
 Metadata is information describing an object.
 
-Example:
+### Example
+
+For file photo.jpg
 
 ```text
 File Type → image/jpeg
@@ -208,10 +214,10 @@ Used for management and identification.
 
 S3 buckets are created inside a specific AWS region.
 
-Example:
+### Example
 
-- Mumbai → ap-south-1  
-- Virginia → us-east-1  
+* Mumbai → ap-south-1
+* Virginia → us-east-1
 
 But bucket names are globally unique.
 
@@ -243,13 +249,13 @@ Users can still access data even if hardware fails.
 
 Availability Zones are physically separate data centers inside a region.
 
-Example:
+### Example
 
 Mumbai region:
 
-- AZ 1  
-- AZ 2  
-- AZ 3  
+* AZ 1
+* AZ 2
+* AZ 3
 
 AWS stores copies across multiple AZs.
 
@@ -269,8 +275,8 @@ Internal replication is automatic.
 
 For manual replication:
 
-- CRR → Cross Region Replication  
-- SRR → Same Region Replication  
+* CRR → Cross Region Replication
+* SRR → Same Region Replication
 
 ---
 
@@ -280,8 +286,8 @@ For manual replication:
 
 AWS stores multiple copies of data across:
 
-- Multiple devices  
-- Multiple Availability Zones  
+* Multiple devices
+* Multiple Availability Zones
 
 If one device or data center fails, other copies remain.
 
@@ -303,8 +309,8 @@ Because AWS stores replicated copies in multiple Availability Zones.
 
 If one data center fails:
 
-- Other copies remain active  
-- Users continue accessing data  
+* Other copies remain active
+* Users continue accessing data
 
 No data loss occurs.
 
@@ -318,13 +324,13 @@ No data loss occurs.
 
 Multiple methods:
 
-- AWS Console  
-- AWS CLI  
-- SDKs (Python boto3, Java, Node.js)  
-- API Calls  
-- Multipart Upload  
+* AWS Console
+* AWS CLI
+* SDKs (Python boto3, Java, Node.js)
+* API Calls
+* Multipart Upload
 
-Example CLI:
+### Example CLI
 
 ```bash
 aws s3 cp file.txt s3://mybucket/
@@ -338,21 +344,21 @@ aws s3 cp file.txt s3://mybucket/
 
 Multipart Upload divides a large file into smaller parts and uploads each part separately.
 
-Example:
+### Example
 
 100 GB file:
 
-- Part 1  
-- Part 2  
-- Part 3  
+* Part 1
+* Part 2
+* Part 3
 
 AWS combines all parts after upload.
 
-Benefits:
+### Benefits
 
-- Faster upload  
-- Retry failed parts only  
-- Better reliability  
+* Faster upload
+* Retry failed parts only
+* Better reliability
 
 ---
 
@@ -362,12 +368,12 @@ Benefits:
 
 Reasons:
 
-- Faster upload through parallel upload  
-- Network failure affects only failed part  
-- Reliable large file upload  
-- Resume upload possible  
+* Faster upload through parallel upload
+* Network failure affects only failed part
+* Reliable large file upload
+* Resume upload possible
 
-Example:
+### Example
 
 Uploading 200 GB backup.
 
@@ -389,10 +395,10 @@ AWS recommendation:
 
 Use Multipart Upload for files **100 MB or larger**
 
-Important Limits:
+### Important Limits
 
-- Minimum part size → 5 MB  
-- Maximum parts → 10,000  
+* Minimum part size → 5 MB
+* Maximum parts → 10,000
 
 ---
 
@@ -404,7 +410,7 @@ Yes.
 
 If Multipart Upload is used, only incomplete parts need re-uploading.
 
-Example:
+### Example
 
 10 parts uploaded.
 
@@ -424,12 +430,12 @@ Maximum:
 
 **10,000 parts**
 
-Rules:
+### Rules
 
-- Minimum part size → 5 MB  
-- Last part can be smaller  
+* Minimum part size → 5 MB
+* Last part can be smaller
 
-Example:
+### Example
 
 A 5 TB file can be divided into thousands of parts.
 
@@ -449,8 +455,8 @@ It cannot execute backend code.
 
 For backend use:
 
-- EC2  
-- AWS Lambda
+* EC2
+* AWS Lambda
 
 ---
 
@@ -462,7 +468,7 @@ Because S3 stores data as objects.
 
 It cannot be mounted like a hard disk.
 
-Example:
+Example of block storage:
 
 Amazon EBS
 
@@ -488,14 +494,22 @@ Only limit:
 
 Because S3 provides:
 
-- High durability  
-- Global scalability  
-- Lower maintenance  
-- Lower cost  
-- Automatic replication  
-- No hardware management  
+* High durability
+* Global scalability
+* Lower maintenance
+* Lower cost
+* Automatic replication
+* No hardware management
 
 ---
+
+# Must Memorize Questions
+
+1. What is S3?
+2. Difference between S3, EBS, and EFS
+3. What is a Bucket?
+4. How does S3 provide 11 nines durability?
+5. What is Multipart Upload?
 
 ---
 
